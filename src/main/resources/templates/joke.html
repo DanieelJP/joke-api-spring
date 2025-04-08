@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chistes Aleatorios</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <span class="navbar-brand">Chistes Aleatorios</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div th:if="${joke.type == 'single'}" class="single-joke">
+                            <span class="badge bg-primary mb-3">Chiste Simple</span>
+                            <p class="fs-5" th:text="${joke.joke}"></p>
+                        </div>
+                        <div th:if="${joke.type == 'twopart'}" class="two-part-joke">
+                            <span class="badge bg-primary mb-3">Chiste en Dos Partes</span>
+                            <p class="fs-5 fw-bold mb-3" th:text="${joke.setup}"></p>
+                            <p class="fs-5 fst-italic border-start border-primary border-4 ps-3" th:text="${joke.delivery}"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a th:href="@{/jokes}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-sync-alt me-2"></i>Obtener otro chiste
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html> 
